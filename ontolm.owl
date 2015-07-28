@@ -1,0 +1,410 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+    xmlns="http://www.owl-ontologies.com/OntologyToMigration.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+  xml:base="http://www.owl-ontologies.com/OntologyToMigration">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://swrl.stanford.edu/ontologies/3.3/swrla.owl"/>
+    <owl:imports rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl"/>
+  </owl:Ontology>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#Hardware"/>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#Machine"/>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#PhysicalTarget">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#Target"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#VirtualTarget"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#OperatingSystem"/>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#VirtualTarget">
+    <owl:disjointWith rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#PhysicalTarget"/>
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Target"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#Software"/>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#VirtualMachine">
+    <owl:disjointWith>
+      <owl:Class rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#PhysicalServer"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Machine"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#PhysicalServer">
+    <owl:disjointWith rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#VirtualMachine"/>
+    <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Machine"/>
+  </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#Networking"/>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#hasPhysicalTarget">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#PhysicalTarget"/>
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#PhysicalServer"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#isTarget">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Machine"/>
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Target"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#hasVirtualTarget">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#VirtualMachine"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#VirtualTarget"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#hasOS">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#OperatingSystem"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Machine"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#hasHardware">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Hardware"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Machine"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#hasNetworking">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Networking"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Machine"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#hasSoftware">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Software"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Machine"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#usageCPU">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Machine"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#virtualHostName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#VirtualMachine"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#maxRam">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#VirtualMachine"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#osVersion">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#OperatingSystem"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#ipAdress">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Networking"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#osName">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#OperatingSystem"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#virtualStatus">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#VirtualMachine"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#usageRam">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Machine"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#usageHD">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Machine"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#nrVirtualCpu">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#VirtualMachine"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#macAdress">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Networking"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#sVersion">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Software"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#ram">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Hardware"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#sName">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Software"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#virtualID">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#VirtualMachine"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#hd">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#Hardware"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </owl:DatatypeProperty>
+  <swrl:Imp rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#usageOfRamVirtual">
+    <swrl:head>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:BuiltinAtom>
+            <swrl:arguments>
+              <rdf:List>
+                <rdf:first>
+                  <swrl:Variable rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#vm"/>
+                </rdf:first>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:first>
+                      <swrl:Variable rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#ur"/>
+                    </rdf:first>
+                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                  </rdf:List>
+                </rdf:rest>
+              </rdf:List>
+            </swrl:arguments>
+            <swrl:builtin rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#select"/>
+          </swrl:BuiltinAtom>
+        </rdf:first>
+        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+      </swrl:AtomList>
+    </swrl:head>
+    <swrl:body>
+      <swrl:AtomList>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:rest>
+              <swrl:AtomList>
+                <rdf:first>
+                  <swrl:BuiltinAtom>
+                    <swrl:arguments>
+                      <rdf:List>
+                        <rdf:rest>
+                          <rdf:List>
+                            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+                            >70</rdf:first>
+                          </rdf:List>
+                        </rdf:rest>
+                        <rdf:first rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#ur"/>
+                      </rdf:List>
+                    </swrl:arguments>
+                    <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                  </swrl:BuiltinAtom>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+              </swrl:AtomList>
+            </rdf:rest>
+            <rdf:first>
+              <swrl:DatavaluedPropertyAtom>
+                <swrl:argument1 rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#vm"/>
+                <swrl:propertyPredicate rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#usageRam"/>
+                <swrl:argument2 rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#ur"/>
+              </swrl:DatavaluedPropertyAtom>
+            </rdf:first>
+          </swrl:AtomList>
+        </rdf:rest>
+        <rdf:first>
+          <swrl:ClassAtom>
+            <swrl:argument1 rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#vm"/>
+            <swrl:classPredicate rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#VirtualMachine"/>
+          </swrl:ClassAtom>
+        </rdf:first>
+      </swrl:AtomList>
+    </swrl:body>
+  </swrl:Imp>
+  <swrl:Variable rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#m"/>
+  <swrl:Imp rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#usageOfHdVirtual">
+    <swrl:body>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:ClassAtom>
+            <swrl:classPredicate rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#VirtualMachine"/>
+            <swrl:argument1 rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#vm"/>
+          </swrl:ClassAtom>
+        </rdf:first>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:first>
+              <swrl:DatavaluedPropertyAtom>
+                <swrl:propertyPredicate rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#usageHD"/>
+                <swrl:argument1 rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#vm"/>
+                <swrl:argument2>
+                  <swrl:Variable rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#uhd"/>
+                </swrl:argument2>
+              </swrl:DatavaluedPropertyAtom>
+            </rdf:first>
+            <rdf:rest>
+              <swrl:AtomList>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                <rdf:first>
+                  <swrl:BuiltinAtom>
+                    <swrl:arguments>
+                      <rdf:List>
+                        <rdf:rest>
+                          <rdf:List>
+                            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+                            >70</rdf:first>
+                            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                          </rdf:List>
+                        </rdf:rest>
+                        <rdf:first rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#uhd"/>
+                      </rdf:List>
+                    </swrl:arguments>
+                    <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThan"/>
+                  </swrl:BuiltinAtom>
+                </rdf:first>
+              </swrl:AtomList>
+            </rdf:rest>
+          </swrl:AtomList>
+        </rdf:rest>
+      </swrl:AtomList>
+    </swrl:body>
+    <swrl:head>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:BuiltinAtom>
+            <swrl:arguments>
+              <rdf:List>
+                <rdf:first rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#vm"/>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:first rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#uhd"/>
+                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                  </rdf:List>
+                </rdf:rest>
+              </rdf:List>
+            </swrl:arguments>
+            <swrl:builtin rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#select"/>
+          </swrl:BuiltinAtom>
+        </rdf:first>
+        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+      </swrl:AtomList>
+    </swrl:head>
+  </swrl:Imp>
+  <swrl:Imp rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#usageOfRamPhysical">
+    <swrl:head>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:BuiltinAtom>
+            <swrl:builtin rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#select"/>
+            <swrl:arguments>
+              <rdf:List>
+                <rdf:first>
+                  <swrl:Variable rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#fm"/>
+                </rdf:first>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    <rdf:first rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#ur"/>
+                  </rdf:List>
+                </rdf:rest>
+              </rdf:List>
+            </swrl:arguments>
+          </swrl:BuiltinAtom>
+        </rdf:first>
+        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+      </swrl:AtomList>
+    </swrl:head>
+    <swrl:body>
+      <swrl:AtomList>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:first>
+              <swrl:DatavaluedPropertyAtom>
+                <swrl:argument1 rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#fm"/>
+                <swrl:argument2 rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#ur"/>
+                <swrl:propertyPredicate rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#usageRam"/>
+              </swrl:DatavaluedPropertyAtom>
+            </rdf:first>
+            <rdf:rest>
+              <swrl:AtomList>
+                <rdf:first>
+                  <swrl:BuiltinAtom>
+                    <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
+                    <swrl:arguments>
+                      <rdf:List>
+                        <rdf:first rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#ur"/>
+                        <rdf:rest>
+                          <rdf:List>
+                            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+                            >30</rdf:first>
+                            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                          </rdf:List>
+                        </rdf:rest>
+                      </rdf:List>
+                    </swrl:arguments>
+                  </swrl:BuiltinAtom>
+                </rdf:first>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+              </swrl:AtomList>
+            </rdf:rest>
+          </swrl:AtomList>
+        </rdf:rest>
+        <rdf:first>
+          <swrl:ClassAtom>
+            <swrl:classPredicate rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#PhysicalServer"/>
+            <swrl:argument1 rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#fm"/>
+          </swrl:ClassAtom>
+        </rdf:first>
+      </swrl:AtomList>
+    </swrl:body>
+  </swrl:Imp>
+  <swrl:Imp rdf:about="http://www.owl-ontologies.com/OntologyToMigration.owl#usageOfHdPysical">
+    <swrl:head>
+      <swrl:AtomList>
+        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+        <rdf:first>
+          <swrl:BuiltinAtom>
+            <swrl:arguments>
+              <rdf:List>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    <rdf:first rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#ur"/>
+                  </rdf:List>
+                </rdf:rest>
+                <rdf:first rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#fm"/>
+              </rdf:List>
+            </swrl:arguments>
+            <swrl:builtin rdf:resource="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#select"/>
+          </swrl:BuiltinAtom>
+        </rdf:first>
+      </swrl:AtomList>
+    </swrl:head>
+    <swrl:body>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:ClassAtom>
+            <swrl:argument1 rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#fm"/>
+            <swrl:classPredicate rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#PhysicalServer"/>
+          </swrl:ClassAtom>
+        </rdf:first>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:rest>
+              <swrl:AtomList>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                <rdf:first>
+                  <swrl:BuiltinAtom>
+                    <swrl:arguments>
+                      <rdf:List>
+                        <rdf:first rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#ur"/>
+                        <rdf:rest>
+                          <rdf:List>
+                            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#long"
+                            >30</rdf:first>
+                            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                          </rdf:List>
+                        </rdf:rest>
+                      </rdf:List>
+                    </swrl:arguments>
+                    <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#lessThan"/>
+                  </swrl:BuiltinAtom>
+                </rdf:first>
+              </swrl:AtomList>
+            </rdf:rest>
+            <rdf:first>
+              <swrl:DatavaluedPropertyAtom>
+                <swrl:propertyPredicate rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#usageHD"/>
+                <swrl:argument1 rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#fm"/>
+                <swrl:argument2 rdf:resource="http://www.owl-ontologies.com/OntologyToMigration.owl#ur"/>
+              </swrl:DatavaluedPropertyAtom>
+            </rdf:first>
+          </swrl:AtomList>
+        </rdf:rest>
+      </swrl:AtomList>
+    </swrl:body>
+  </swrl:Imp>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4.4, Build 579)  http://protege.stanford.edu -->
